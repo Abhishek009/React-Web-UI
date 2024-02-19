@@ -1,0 +1,23 @@
+.App {
+  
+  width: 600px;
+  margin: 0 auto;
+  margin-top: top 40px;
+}
+
+.HeaderText {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: top 30px;
+}
+
+.TextPadding {
+  padding: 10px;
+}
+
+.TextFormat {
+  text-align: left;
+  margin: 0 auto;
+  padding-left: 80px;
+
+}
