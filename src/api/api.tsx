@@ -20,3 +20,22 @@ export const saveInterface = async (data: FormDataSaveRequest): Promise<void> =>
         throw error;
     }
 };
+
+
+
+export const uploadFile = async (data: FormData): Promise<void> => {
+    try {
+        const response = await fetch('http://localhost:8080/upload', {
+            method: 'POST',
+            body: data,
+           //body: JSON.stringify({"squadName":"squadName","smName":"smName","sourceCountry":"sourceCountry"})
+            
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+    } catch (error) {
+        console.error('Error saving interface:', error);
+        throw error;
+    }
+};
