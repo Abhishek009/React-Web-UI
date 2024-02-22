@@ -88,7 +88,7 @@ const handleSubmitFileUpload = (event:React.FormEvent) => {
         setHdfsFile(HdfsFile)
         const formData = new FormData();
         formData.append('OAFile',OAFile)
-        formData.append('HDFSFile',HdfsFile)
+        formData.append('HdfsFile',HdfsFile)
         uploadFile(formData)
     } catch (error) {
         console.error('Error submitting data:', error);
