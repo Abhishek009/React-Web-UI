@@ -2,9 +2,15 @@
   
   width: 600px;
   margin: 0 auto;
-  margin-top: top 40px;
+  margin-top: top 90px;
 }
 
+.AppOption {
+  
+  width: 300px;
+  margin: 0 auto;
+  margin-top: top 40px;
+}
 .HeaderText {
   text-align: center;
   margin: 0 auto;
