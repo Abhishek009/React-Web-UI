@@ -21,7 +21,7 @@ export const saveInterface = async (data: FormDataSaveRequest): Promise<void> =>
 
 
 
-export const uploadFile = async (data: FormData): Promise<void> => {
+export const uploadFile = async (data: FormData) => {
     try {
         const response = await fetch('http://localhost:8080/upload', {
             method: 'POST',
@@ -29,6 +29,9 @@ export const uploadFile = async (data: FormData): Promise<void> => {
         });
         if (!response.ok) {
             throw new Error('Network response was not ok');
+        }else{
+            const data = response.json as unknown;
+            return data;
         }
     } catch (error) {
         console.error('Error saving interface:', error);

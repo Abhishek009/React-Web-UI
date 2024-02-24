@@ -11,6 +11,7 @@ import React, { useState } from 'react';
 import { saveInterface, uploadFile } from "../../api/api";
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const UploadModal = () => {
 
@@ -53,7 +54,7 @@ const UploadModal = () => {
 
     const handleSubmitFileUpload = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log("hi i am here")
+        
         try {
             if (typeof OAFile == 'undefined' || typeof HdfsFile == 'undefined') return
 
@@ -62,12 +63,18 @@ const UploadModal = () => {
             const formData = new FormData();
             formData.append('OAFile', OAFile)
             formData.append('HdfsFile', HdfsFile)
-            uploadFile(formData)
-            handleClose()
+            uploadFile(formData).then((value) => {
+                    console.log(value)
+                    handleClose()
+                    });
+           
+            
         } catch (error) {
             console.error('Error submitting data:', error);
         }
     }
+
+   
 
     return (
         <form onSubmit={handleSubmitFileUpload}>
@@ -111,7 +118,7 @@ const UploadModal = () => {
                         <Grid xs={6} >{OAFile && <p>{OAFile.name}</p>}</Grid>
                     </Grid>
                     <Grid container spacing={4}>
-                        
+                    <LinearProgress variant="determinate" value={10} />
                     </Grid>
                     </Box>
                 </DialogContent>
