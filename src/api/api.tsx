@@ -25,9 +25,7 @@ export const uploadFile = async (data: FormData): Promise<void> => {
     try {
         const response = await fetch('http://localhost:8080/upload', {
             method: 'POST',
-            body: data,
-           //body: JSON.stringify({"squadName":"squadName","smName":"smName","sourceCountry":"sourceCountry"})
-            
+            body: data,            
         });
         if (!response.ok) {
             throw new Error('Network response was not ok');

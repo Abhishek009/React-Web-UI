@@ -1,17 +1,12 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { FormControl, FormLabel } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import './SourceInterface.css';
-import { dark } from '@mui/material/styles/createPalette';
-import { Typography } from '@material-ui/core';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const Item = styled(Paper)(({ theme }) => ({

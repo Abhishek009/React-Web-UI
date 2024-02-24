@@ -16,9 +16,6 @@ const UploadButton=({name}:ButtonName) => {
         setFile(target.files[0]);
         //const reader = new FileReader();
     console.log('target',target.files)
-        
-    
-        
       };
 
 return(
