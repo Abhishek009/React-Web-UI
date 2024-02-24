@@ -31,7 +31,7 @@ const SourceInterface = () => {
     const handleSourceCountryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setsourceCountry(event.target.value);
     };
-    
+
     const handleSubmit = (event: React.FormEvent) => {
         console.log(squadName)
         console.log(smName)
@@ -56,7 +56,7 @@ const SourceInterface = () => {
             
                 <Grid className='App'>
                     <Paper elevation={10} >
-                    <form onSubmit={handleSubmit}>
+                     <form onSubmit={handleSubmit}>
                         <Grid xs={12}><Typography variant="h4" className='HeaderText TextPadding'>
                             Security Matrix
                         </Typography>
@@ -109,19 +109,7 @@ const SourceInterface = () => {
                                 />
                             </Grid>
                         </Grid>
-                        </form>
                         
-
-                        
-                        
-                        <Grid container spacing={4} className="TextFormat">
-                            <Grid xs={4} >
-                               
-                            </Grid>
-                            <Grid xs={8} >
-                            <UploadModal></UploadModal>
-                            </Grid>
-                        </Grid>
                         <Grid container spacing={4} className="TextFormat">
                             <Grid xs={4} >
                                
@@ -130,10 +118,19 @@ const SourceInterface = () => {
                                 <Button variant="contained" type="submit">Generate SM</Button>
                             </Grid>
                         </Grid>
-
+                        </form>
+                        <Grid container spacing={4} className="TextFormat">
+                            <Grid xs={4} >
+                               
+                            </Grid>
+                            <Grid xs={8} >
+                            <UploadModal></UploadModal>
+                            </Grid>
+                        </Grid>
                     </Paper>
                 </Grid>
-            
+                
+                
         </aside>
     );
 

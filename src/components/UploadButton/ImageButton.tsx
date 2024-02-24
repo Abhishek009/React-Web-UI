@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import logo from "../../logo.svg";
+import upload from "../../assets/upload.png";
 import Grid from '@mui/material/Unstable_Grid2';
 import { Paper, Typography } from "@mui/material";
 import '../SourceInterface/SourceInterface.css';
@@ -42,7 +42,7 @@ const ImageButton = () => {
         <Grid container spacing={1}>
           <Grid xs={4} >
             <ImageButtonStyle
-              imageUrl={logo} // Replace with your image path
+              imageUrl={upload} // Replace with your image path
               onClick={handleButtonClick}
             >
            Upload Config
@@ -51,7 +51,7 @@ const ImageButton = () => {
           <Grid container spacing={1}>
           <Grid xs={4} >
             <ImageButtonStyle
-              imageUrl={logo} // Replace with your image path
+              imageUrl={upload} // Replace with your image path
               onClick={handleButtonClick}
             >
            Generate SM
