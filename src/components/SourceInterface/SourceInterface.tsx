@@ -1,82 +1,138 @@
-import React from 'react';
-import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+import { Paper, Typography } from "@mui/material";
+import React, { FormEvent, useRef, useState } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import './SourceInterface.css';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
-
-
-
-/*const SideItem = styled('div')(({ theme }) => ({
-
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    
-})); */
-
+import { FormControl, FormLabel } from '@mui/material';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { FormDataSaveRequest } from '../../api/model';
+import { saveInterface, uploadFile } from "../../api/api";
+import UploadModal from "../UploadButton/UploadModal";
 const SourceInterface = () => {
-    const [age, setAge] = React.useState('');
 
-    const handleChange = (event: SelectChangeEvent) => {
-        setAge(event.target.value);
+    
+    const [squadName, setSquadName] = useState('');
+    const [smName, setSMName] = useState('');
+    const [sourceCountry, setsourceCountry] = useState('');
+    
+
+    const handleSquadNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSquadName(event.target.value);
     };
 
+    const handleSMChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSMName(event.target.value);
+    };
+
+    const handleSourceCountryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setsourceCountry(event.target.value);
+    };
+
+    const handleSubmit = (event: React.FormEvent) => {
+        console.log(squadName)
+        console.log(smName)
+        console.log(sourceCountry)
+        event.preventDefault();
+        try {
+            const formData: FormDataSaveRequest = {
+                squadName: squadName,
+                smName: smName,
+                sourceCountry: sourceCountry,
+            };
+            saveInterface(formData);
+        } catch (error) {
+            console.error('Error submitting data:', error);
+        }
+
+    };
+
+
     return (
+        <aside>
+            
+                <Grid className='App'>
+                    <Paper elevation={10} >
+                     <form onSubmit={handleSubmit}>
+                        <Grid xs={12}><Typography variant="h4" className='HeaderText TextPadding'>
+                            Security Matrix
+                        </Typography>
+                        </Grid>
+                        <br></br>
+                        <Grid container spacing={4} className="TextFormat" >
+                            <Grid xs={4} >
+                                <FormLabel > Squad Name </FormLabel>
+                            </Grid>
+                            <Grid xs={5} >
+                                <FormControl fullWidth>
+                                    <TextField
+                                        id="squadName"
+                                        variant="standard"
+                                        onChange={handleSquadNameChange}
+                                    ></TextField>
 
-        <Box sx={{ flexGrow: 1 }}>
-            <Grid container columnSpacing={2} >
-                <Grid xs={3}></Grid>
+                                </FormControl>
+                            </Grid>
+                        </Grid>
 
-                <Grid xs={6} spacing={2}>
-
-                    <Item>
-                        <Grid container spacing={1} >
-
-                            <Grid xs={6}>
+                        <Grid container spacing={4} className="TextFormat">
+                            <Grid xs={4} >
+                                <FormLabel>Process Type</FormLabel>
+                            </Grid>
+                            <Grid xs={5} >
+                                <FormControl >
+                                    <RadioGroup
+                                        row
+                                        aria-labelledby="demo-radio-buttons-group-label"
+                                        name="radio-buttons-group"
+                                        onChange={handleSMChange}
+                                    >
+                                        <FormControlLabel value="SM_Prepare" control={<Radio />} label="SM_Prepare" />
+                                        <FormControlLabel value="SM_Compare" control={<Radio />} label="SM_Compare" />
+                                    </RadioGroup>
+                                </FormControl>
+                            </Grid>
+                        </Grid>
+                        <Grid container spacing={4} className="TextFormat">
+                            <Grid xs={4} >
+                                <FormLabel >Source|Country</FormLabel>
+                            </Grid>
+                            <Grid xs={5} >
                                 <TextField
                                     id="outlined-multiline-flexible"
-                                    label="Source|Country"
                                     multiline
-                                    maxRows={4}
+                                    maxRows={3}
+                                    onChange={handleSourceCountryChange}
                                 />
                             </Grid>
-                            <Grid xs={12}>
-                            <Box sx={{ minWidth: 120 }}>
-                                <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-helper-label"
-                                    id="demo-simple-select-helper"
-                                    value={age}
-                                    label="Age">
-                                    <MenuItem value=""><em>None</em></MenuItem>
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
-                                </Select>
-                            </Box>
-
-                            </Grid>
-                            
                         </Grid>
-                    </Item>
+                        
+                        <Grid container spacing={4} className="TextFormat">
+                            <Grid xs={4} >
+                               
+                            </Grid>
+                            <Grid xs={8} >
+                                <Button variant="contained" type="submit">Generate SM</Button>
+                            </Grid>
+                        </Grid>
+                        </form>
+                        <Grid container spacing={4} className="TextFormat">
+                            <Grid xs={4} >
+                               
+                            </Grid>
+                            <Grid xs={8} >
+                            <UploadModal></UploadModal>
+                            </Grid>
+                        </Grid>
+                    </Paper>
                 </Grid>
-                <Grid xs={3}></Grid>
-
-            </Grid>
-        </Box>
+                
+                
+        </aside>
     );
-};
+
+}
 
 export default SourceInterface;

@@ -12,6 +12,7 @@ import { saveInterface, uploadFile } from "../../api/api";
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import LinearProgress from '@mui/material/LinearProgress';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 const UploadModal = () => {
 
@@ -78,7 +79,7 @@ const UploadModal = () => {
 
     return (
         <form onSubmit={handleSubmitFileUpload}>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            <Button variant="text" onClick={handleClickOpen} startIcon={<CloudUploadIcon />} >
                 Upload Files
             </Button>
            
