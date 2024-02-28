@@ -1,7 +1,7 @@
 
 import { FormDataSaveRequest } from "./model";
 
-export const saveInterface = async (data: FormDataSaveRequest): Promise<void> => {
+export const saveInterface = async (data: FormDataSaveRequest): Promise<Boolean> => {
     try {
         const response = await fetch('http://localhost:8080/executeshell', {
             method: 'POST',
@@ -10,31 +10,32 @@ export const saveInterface = async (data: FormDataSaveRequest): Promise<void> =>
             },
             body: JSON.stringify(data),  
         });
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+        if (response) {
+            return true;
+        }else{
+            return false;
         }
     } catch (error) {
-        console.error('Error saving interface:', error);
+        console.error('Error saving execution SM:', error);
         throw error;
     }
 };
 
 
 
-export const uploadFile = async (data: FormData) => {
+export const uploadFile = async (data: FormData):Promise<Boolean> => {
     try {
         const response = await fetch('http://localhost:8080/upload', {
             method: 'POST',
             body: data,            
         });
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            return false;
         }else{
-            const data = response.json as unknown;
-            return data;
+            return true;
         }
     } catch (error) {
-        console.error('Error saving interface:', error);
+        console.error('Error in uploading file:', error);
         throw error;
     }
 };
