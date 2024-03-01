@@ -51,7 +51,7 @@ const SourceInterface = () => {
             sourceCountry: sourceCountry,
         };
         saveInterface(formData).then(function (data) {
-            console.log("========"+data)
+            console.log("========" + data)
             if (data) {
                 setIsExecuted(false);
                 setSuccess("SM Executed succesfully");
@@ -147,7 +147,7 @@ const SourceInterface = () => {
 
                             </Grid>
                             <Grid xs={8} >
-                                <Button variant="contained" type="submit" disabled={isClicked}>Generate SM</Button>
+                                <Button variant="contained" type="submit" size='small' disabled={isClicked}>Generate SM</Button>
                             </Grid>
                         </Grid>
                         <Grid container spacing={4}>
@@ -158,15 +158,15 @@ const SourceInterface = () => {
                         </Grid>
                     </form>
                     <Grid container spacing={4} className="TextFormat">
-                    <Grid xs={4} >
-                        
-                        </Grid>
-                        <Grid xs={8} >
-                        <UploadModal status={isClicked}></UploadModal> 
-                        </Grid>
-                        {/* <Grid xs={6} >
-                            <DownloadModal status={isClicked}></DownloadModal>
+                        {/* <Grid xs={4} >
+
                         </Grid> */}
+                        <Grid xs={6} >
+                            <UploadModal status={isClicked}></UploadModal>
+                        </Grid>
+                        <Grid xs={6} >
+                            <DownloadModal status={isClicked}></DownloadModal>
+                        </Grid>
                     </Grid>
                 </Paper>
             </Grid>

@@ -101,7 +101,7 @@ const UploadModal = (props: {status:boolean}) => {
                             <Button
                                 variant='contained'
                                 component="label"
-                                size="medium" fullWidth>Upload HDFS file
+                                size="small" fullWidth>Upload HDFS file
                                 <input type="file" hidden onChange={handleOnChangeHdsfFile}></input>
                             </Button>
                             
@@ -113,7 +113,7 @@ const UploadModal = (props: {status:boolean}) => {
                         <Grid xs={6} ><Button
                                 variant='contained'
                                 component="label"
-                                size="medium" fullWidth>Upload OA file
+                                size="small" fullWidth >Upload OA file
                                 <input type="file" hidden onChange={handleOnChangeOAFile}></input>
                         </Button></Grid>
                         <Grid xs={6} >{OAFile && <p>{OAFile.name}</p>}</Grid>
@@ -124,8 +124,8 @@ const UploadModal = (props: {status:boolean}) => {
                     </Box>
                 </DialogContent>
                 <DialogActions>
-                    <Button variant="contained" type="submit">Upload Config</Button>
-                    <Button variant="contained" onClick={handleClose}>Cancel</Button>
+                    <Button variant="contained" type="submit" size='small'>Upload Config</Button>
+                    <Button variant="contained" onClick={handleClose} size='small'>Cancel</Button>
                     
                 </DialogActions>
             </Dialog>
